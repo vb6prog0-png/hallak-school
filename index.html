@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معهد النخبة التعليمي</title>
+<link rel="icon" href="https://i.ibb.co/PzPsN0mt/images-1.jpg">
+<style>
+  :root{
+    --primary:#0f2b46;
+    --primary-2:#1b4d7a;
+    --gold:#b8963e;
+    --gold-light:#d4af5a;
+    --bg:#f5f6f8;
+    --card:#ffffff;
+    --text:#1a2332;
+    --muted:#6b7a8f;
+    --line:#e3e6ec;
+    --success:#2d7a4f;
+    --danger:#a83232;
+    --radius:10px;
+    --shadow:0 4px 20px rgba(15,43,70,.07);
+    --shadow-lg:0 12px 40px rgba(15,43,70,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI','Tahoma',sans-serif}
+  body{background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+
+  /* ===== الهيدر ===== */
+  header{
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-2) 100%);
+    color:#fff;padding:16px 32px;display:flex;justify-content:space-between;
+    align-items:center;box-shadow:0 4px 20px rgba(0,0,0,.15);
+    position:sticky;top:0;z-index:100;
+    border-bottom:3px solid var(--gold);
+  }
+  .brand{display:flex;align-items:center;gap:14px;cursor:pointer;
+    user-select:none;transition:.2s;padding:4px 8px;border-radius:8px}
+  .brand:active{transform:scale(.98)}
+  .brand img{
+    width:52px;height:52px;border-radius:50%;object-fit:cover;
+    border:3px solid var(--gold);box-shadow:0 4px 14px rgba(0,0,0,.3);
+    background:#fff;
+  }
+  .brand-text h1{font-size:19px;font-weight:700;letter-spacing:.3px;line-height:1.2}
+  .brand-text p{font-size:11px;color:var(--gold-light);letter-spacing:2px;font-weight:600}
+
+  nav{display:flex;gap:8px;align-items:center}
+  nav button{
+    background:rgba(255,255,255,.08);border:1.5px solid rgba(184,150,62,.4);
+    color:#fff;padding:9px 18px;border-radius:8px;cursor:pointer;
+    transition:.2s;font-size:14px;font-weight:600;
+  }
+  nav button:hover{background:rgba(184,150,62,.25);border-color:var(--gold)}
+  nav button.active{background:var(--gold);color:var(--primary);border-color:var(--gold)}
+
+  main{max-width:1150px;margin:32px auto;padding:0 20px}
+  .card{
+    background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:28px;margin-bottom:22px;border:1px solid var(--line);
+  }
+  .hidden{display:none!important}
+  h2{color:var(--primary);margin-bottom:18px;font-size:21px;font-weight:700;
+    display:flex;align-items:center;gap:10px;padding-bottom:12px;
+    border-bottom:2px solid var(--line)}
+  h3{color:var(--primary);margin:14px 0 12px;font-size:16px;font-weight:700;
+    display:flex;align-items:center;gap:8px}
+  h3::before{content:'';width:4px;height:18px;background:var(--gold);border-radius:2px}
+
+  input,textarea,select{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;
+    font-size:14px;margin-bottom:12px;transition:.2s;background:#fafbfc;
+    font-family:inherit;color:var(--text);
+  }
+  input:focus,textarea:focus,select:focus{
+    outline:none;border-color:var(--primary-2);background:#fff;
+    box-shadow:0 0 0 3px rgba(27,77,122,.08);
+  }
+  textarea{min-height:100px;resize:vertical}
+  select{cursor:pointer}
+
+  .btn{
+    background:var(--primary);color:#fff;border:none;padding:12px 24px;
+    border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;
+    transition:.2s;width:100%;letter-spacing:.3px;
+  }
+  .btn:hover{background:var(--primary-2);box-shadow:0 6px 18px rgba(15,43,70,.25)}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));
+    color:var(--primary)}
+  .btn.gold:hover{box-shadow:0 6px 18px rgba(184,150,62,.4)}
+  .btn.success{background:var(--success)}
+  .btn.danger{background:var(--danger)}
+  .btn.outline{background:transparent;border:1.5px solid var(--line);color:var(--text)}
+  .btn.small{width:auto;padding:7px 14px;font-size:12px;border-radius:6px}
+  .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .item{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+    box-shadow:0 2px 10px rgba(15,43,70,.04);
+  }
+  .item:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);
+    border-color:rgba(184,150,62,.4)}
+  .item img{width:100%;height:180px;object-fit:cover;background:#e8ebf0}
+  .item .body{padding:18px;flex:1}
+  .item .title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:15px}
+  .item .desc{color:var(--muted);font-size:13.5px;line-height:1.7}
+  .item video{width:100%;height:180px;object-fit:cover;background:#000}
+  .item audio{width:100%;margin-top:10px}
+
+  .badge{display:inline-block;background:var(--gold);color:#fff;font-size:11px;
+    padding:4px 10px;border-radius:20px;font-weight:700;letter-spacing:.3px}
+  .badge.green{background:var(--success)}
+  .badge.blue{background:var(--primary-2)}
+
+  .student-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;border:1px solid var(--line);border-radius:8px;
+    margin-bottom:10px;background:#fafbfc;transition:.2s;
+  }
+  .student-row:hover{background:#f0f3f7;border-color:var(--gold-light)}
+  .student-row .name{font-weight:700;color:var(--primary)}
+  .star{cursor:pointer;font-size:24px;filter:grayscale(1);opacity:.4;
+    transition:.2s;user-select:none}
+  .star:hover{transform:scale(1.15)}
+  .star.on{filter:none;opacity:1;transform:scale(1.1)}
+
+  .tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;
+    border-bottom:2px solid var(--line);padding-bottom:0}
+  .tabs button{
+    background:transparent;border:none;padding:12px 20px;cursor:pointer;
+    font-weight:700;color:var(--muted);transition:.2s;font-size:14px;
+    border-bottom:3px solid transparent;margin-bottom:-2px;
+  }
+  .tabs button:hover{color:var(--primary)}
+  .tabs button.active{color:var(--primary);border-bottom-color:var(--gold)}
+
+  .empty{text-align:center;color:var(--muted);padding:50px 20px;font-size:14px}
+  .empty::before{content:'📭';display:block;font-size:40px;margin-bottom:10px;opacity:.4}
+
+  .guest-banner{
+    background:linear-gradient(135deg,#fff8e6,#fdf0d0);color:#7a5c10;
+    padding:16px 22px;border-radius:var(--radius);margin-bottom:22px;
+    font-weight:600;display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:12px;
+    border:1px solid var(--gold-light);border-right:4px solid var(--gold);
+  }
+  .promo{
+    background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    color:#fff;padding:28px;border-radius:var(--radius);margin-top:24px;
+    text-align:center;border:2px solid var(--gold);position:relative;overflow:hidden;
+  }
+  .promo::before{
+    content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;
+    background:radial-gradient(circle,rgba(184,150,62,.15) 0%,transparent 60%);
+  }
+  .promo h3{color:#fff;justify-content:center;font-size:18px}
+  .promo h3::before{background:var(--gold)}
+  .promo p{position:relative;z-index:1}
+  .promo .phone{
+    display:inline-block;background:var(--gold);color:var(--primary);
+    font-size:22px;font-weight:800;padding:12px 28px;border-radius:10px;
+    margin-top:14px;letter-spacing:2px;direction:ltr;
+    box-shadow:0 8px 24px rgba(184,150,62,.4);position:relative;z-index:1;
+  }
+
+  .login-box{max-width:440px;margin:60px auto}
+  .login-box h2{justify-content:center;border:none;padding-bottom:0}
+  .login-box h2::before{display:none}
+
+  .toast{
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+    background:var(--primary);color:#fff;padding:14px 28px;border-radius:8px;
+    z-index:999;opacity:0;transition:.3s;pointer-events:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);font-weight:600;
+    border-right:4px solid var(--gold);
+  }
+  .toast.show{opacity:1;bottom:40px}
+
+  .admin-section{border-top:3px solid var(--gold);padding-top:24px;margin-top:24px}
+  footer{
+    text-align:center;color:var(--muted);padding:36px 20px;font-size:13px;
+    border-top:1px solid var(--line);margin-top:40px;
+  }
+  footer strong{color:var(--primary)}
+
+  .file-label{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    background:#f0f4f9;border:2px dashed var(--primary-2);
+    border-radius:8px;padding:14px;text-align:center;cursor:pointer;
+    color:var(--primary-2);font-weight:600;margin-bottom:10px;
+    transition:.2s;font-size:13.5px;
+  }
+  .file-label:hover{background:#e3ebf4;border-color:var(--gold)}
+  .file-info{font-size:12px;color:var(--muted);text-align:center;margin-bottom:10px;min-height:16px}
+  .progress{height:5px;background:#e3e6ec;border-radius:3px;overflow:hidden;
+    margin-bottom:10px;display:none}
+  .progress.on{display:block}
+  .progress > div{height:100%;background:var(--gold);width:0%;transition:.3s}
+
+  .modal-bg{
+    position:fixed;inset:0;background:rgba(15,43,70,.75);
+    backdrop-filter:blur(4px);display:flex;align-items:center;
+    justify-content:center;z-index:500;padding:20px;
+  }
+  .modal-bg.hidden{display:none}
+  .modal{
+    background:#fff;border-radius:12px;padding:32px;max-width:420px;width:100%;
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+    border-top:4px solid var(--gold);
+  }
+  .modal h2{justify-content:center;border:none;padding-bottom:0}
+  .modal h2::before{display:none}
+
+  .item-actions{
+    display:flex;gap:6px;margin-top:12px;padding-top:12px;
+    border-top:1px solid var(--line);
+  }
+  .item-actions button{
+    flex:1;padding:8px;border-radius:6px;border:none;cursor:pointer;
+    font-size:12px;font-weight:700;transition:.2s;
+  }
+  .item-actions .edit{background:#e8f0fa;color:var(--primary-2)}
+  .item-actions .edit:hover{background:var(--primary-2);color:#fff}
+  .item-actions .del{background:#fae8e8;color:var(--danger)}
+  .item-actions .del:hover{background:var(--danger);color:#fff}
+
+  .admin-list-item{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;border:1px solid var(--line);border-radius:8px;
+    margin-bottom:10px;background:#fafbfc;gap:12px;transition:.2s;
+  }
+  .admin-list-item:hover{background:#f0f3f7;border-color:var(--gold-light)}
+  .admin-list-item .info{flex:1;min-width:0}
+  .admin-list-item .info .name{font-weight:700;color:var(--primary);font-size:14px}
+  .admin-list-item .info .meta{font-size:12px;color:var(--muted);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .admin-list-item .acts{display:flex;gap:6px;flex-shrink:0}
+
+  @media(max-width:640px){
+    header{flex-direction:column;gap:14px;padding:16px 20px}
+    .brand img{width:46px;height:46px}
+    .brand-text h1{font-size:16px}
+    nav{width:100%;justify-content:center;flex-wrap:wrap}
+    nav button{padding:8px 14px;font-size:13px}
+    main{padding:0 14px;margin:20px auto}
+    .card{padding:20px}
+    .tabs button{padding:10px 14px;font-size:13px}
+    .admin-list-item{flex-direction:column;align-items:stretch}
+    .admin-list-item .acts{justify-content:flex-end}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" id="siteTitle">
+    <img src="https://i.ibb.co/PzPsN0mt/images-1.jpg" alt="شعار المعهد">
+    <div class="brand-text">
+      <h1>معهد النخبة التعليمي</h1>
+      <p>AL-NUKHBA INSTITUTE</p>
+    </div>
+  </div>
+  <nav>
+    <button id="navStudent" class="active" onclick="showView('student')">واجهة الطالب</button>
+    <button id="navAdmin" class="hidden" onclick="showView('admin')">لوحة المدير</button>
+    <button id="navLogout" class="hidden" onclick="logout()">خروج</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===== شاشة إدخال الاسم ===== -->
+  <div id="nameScreen" class="card login-box">
+    <h2>👋 أهلاً بكم في معهد النخبة</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:20px;font-size:14px">
+      الرجاء إدخال اسمك الكامل لمتابعة المحتوى التعليمي
+    </p>
+    <input id="studentName" placeholder="اكتب اسمك الكامل هنا..." />
+    <button class="btn" onclick="enterAsStudent()">دخول كطالب</button>
+    <button class="btn gold" style="margin-top:10px" onclick="enterAsGuest()">
+      دخول كضيف (استعراض فقط)
+    </button>
+  </div>
+
+  <!-- ===== واجهة الطالب ===== -->
+  <div id="studentView" class="hidden">
+    <div id="guestBanner" class="guest-banner hidden">
+      <span>🔎 أنت تستعرض كضيف — بعض المزايا مخفية.</span>
+      <button class="btn gold small" onclick="scrollToPromo()">ترقية الحساب</button>
+    </div>
+
+    <div class="tabs">
+      <button class="active" onclick="switchTab('videos',this)">🎬 الفيديوهات</button>
+      <button onclick="switchTab('materials',this)">📚 المواد والدروس</button>
+      <button onclick="switchTab('news',this)">📰 أخبار الطالب</button>
+    </div>
+
+    <div id="tab-videos" class="tab-content">
+      <h2>🎬 الدروس المرئية</h2>
+      <div id="videosGrid" class="grid"></div>
+    </div>
+
+    <div id="tab-materials" class="tab-content hidden">
+      <h2>📚 المواد التعليمية</h2>
+      <div id="materialsGrid" class="grid"></div>
+    </div>
+
+    <div id="tab-news" class="tab-content hidden">
+      <h2>📰 أخبار الطالب ومتابعة الأهالي</h2>
+      <div id="newsGrid" class="grid"></div>
+    </div>
+
+    <div id="promoBox" class="promo">
+      <h3>⭐ ترقية إلى العضوية المميزة</h3>
+      <p style="margin:12px 0;opacity:.9">
+        احصل على مزايا حصرية: تحميل الملفات، اختبارات تفاعلية،
+        متابعة شخصية، وشهادة إتمام.
+      </p>
+      <p>للترقية تواصل معنا على الرقم:</p>
+      <div class="phone">0991226571</div>
+    </div>
+  </div>
+
+  <!-- ===== لوحة المدير ===== -->
+  <div id="adminView" class="hidden">
+    <div class="card">
+      <h2>👨‍🏫 لوحة تحكم المدير</h2>
+      <p style="color:var(--muted);font-size:14px">
+        إدارة كاملة للمحتوى والطلبة والأخبار من مكان واحد
+      </p>
+    </div>
+
+    <!-- إضافة فيديو -->
+    <div class="card">
+      <h3>🎬 إضافة فيديو جديد</h3>
+      <input id="vTitle" placeholder="اسم الفيديو / الدرس" />
+      <input id="vUrl" placeholder="رابط الفيديو (YouTube / MP4)" />
+      <input id="vImg" placeholder="رابط الصورة المصغّرة (اختياري)" />
+      <button class="btn" onclick="addVideo()">➕ إضافة الفيديو</button>
+    </div>
+
+    <!-- إضافة مادة / درس -->
+    <div class="card">
+      <h3>📚 إضافة درس / مادة / ملف</h3>
+      <input id="mTitle" placeholder="عنوان الدرس" />
+      <textarea id="mText" placeholder="الشرح أو الوصف..."></textarea>
+
+      <label class="file-label" for="mImgFile">📷 اختيار صورة (ترفع تلقائياً)</label>
+      <input id="mImgFile" type="file" accept="image/*" style="display:none"
+             onchange="handleImageUpload(this,'mImg')" />
+      <div class="progress" id="mImgProg"><div></div></div>
+      <div class="file-info" id="mImgInfo"></div>
+      <input id="mImg" placeholder="أو الصق رابط صورة مباشر (اختياري)" />
+
+      <label class="file-label" for="mAudioFile">🎵 اختيار ملف صوتي</label>
+      <input id="mAudioFile" type="file" accept="audio/*" style="display:none"
+             onchange="handleGenericUpload(this,'mAudio')" />
+      <div class="progress" id="mAudioProg"><div></div></div>
+      <div class="file-info" id="mAudioInfo"></div>
+      <input id="mAudio" placeholder="أو الصق رابط صوت مباشر (اختياري)" />
+
+      <label class="file-label" for="mDocFile">📄 اختيار مستند / أي ملف</label>
+      <input id="mDocFile" type="file" style="display:none"
+             onchange="handleGenericUpload(this,'mDoc')" />
+      <div class="progress" id="mDocProg"><div></div></div>
+      <div class="file-info" id="mDocInfo"></div>
+      <input id="mDoc" placeholder="أو الصق رابط ملف مباشر (اختياري)" />
+
+      <button class="btn" onclick="addMaterial()">➕ إضافة الدرس</button>
+    </div>
+
+    <!-- إضافة خبر لطالب معين -->
+    <div class="card">
+      <h3>📰 نشر خبر لطالب محدد</h3>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:12px">
+        اختر الطالب من القائمة — لن يرى الخبر سواه.
+      </p>
+      <select id="nStudent">
+        <option value="">— اختر الطالب —</option>
+      </select>
+      <input id="nTitle" placeholder="عنوان الخبر" />
+      <textarea id="nText" placeholder="تفاصيل الخبر..."></textarea>
+
+      <label class="file-label" for="nImgFile">📷 اختيار صورة للخبر</label>
+      <input id="nImgFile" type="file" accept="image/*" style="display:none"
+             onchange="handleImageUpload(this,'nImg')" />
+      <div class="progress" id="nImgProg"><div></div></div>
+      <div class="file-info" id="nImgInfo"></div>
+      <input id="nImg" placeholder="أو الصق رابط صورة مباشر (اختياري)" />
+
+      <button class="btn success" onclick="addNews()">➕ نشر الخبر</button>
+    </div>
+
+    <!-- إدارة الطلبة -->
+    <div class="card admin-section">
+      <h3>👥 الطلبة المسجلون</h3>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:14px">
+        انقر على النجمة ⭐ لتمييز التلميذ وفتح المزايا الإضافية له.
+      </p>
+      <div id="studentsList"></div>
+    </div>
+
+    <!-- إدارة المحتوى -->
+    <div class="card admin-section">
+      <h3>🗂️ إدارة المحتوى المضاف</h3>
+      <div class="tabs">
+        <button class="active" onclick="switchAdminTab('videos',this)">الفيديوهات</button>
+        <button onclick="switchAdminTab('materials',this)">المواد</button>
+        <button onclick="switchAdminTab('news',this)">الأخبار</button>
+      </div>
+      <div id="adminList"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © 2025 <strong>معهد النخبة التعليمي</strong> — جميع الحقوق محفوظة
+  <br>للترقية: 0991226571
+</footer>
+
+<!-- ===== نافذة كلمة مرور المدير ===== -->
+<div id="adminModal" class="modal-bg hidden">
+  <div class="modal">
+    <h2>🔐 دخول المدير</h2>
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px">
+      أدخل كلمة المرور للوصول إلى لوحة التحكم
+    </p>
+    <input id="adminPass" type="password" placeholder="كلمة المرور"
+           autocomplete="off" onkeydown="if(event.key==='Enter')tryAdminLogin()" />
+    <button class="btn" onclick="tryAdminLogin()">دخول</button>
+    <button class="btn outline" style="margin-top:8px"
+            onclick="closeAdminModal()">إلغاء</button>
+  </div>
+</div>
+
+<!-- ===== نافذة التعديل ===== -->
+<div id="editModal" class="modal-bg hidden">
+  <div class="modal" style="max-width:520px">
+    <h2 id="editTitle">✏️ تعديل</h2>
+    <div id="editBody"></div>
+    <button class="btn gold" onclick="saveEdit()">💾 حفظ التعديلات</button>
+    <button class="btn outline" style="margin-top:8px"
+            onclick="closeEditModal()">إلغاء</button>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getDatabase, ref, push, set, onValue, remove, update, get
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = { databaseURL: "https://myfirst-dbc6f-default-rtdb.firebaseio.com/" };
+const app = initializeApp(firebaseConfig);
+const db  = getDatabase(app);
+
+/* ============================================================
+   ثوابت
+   ============================================================ */
+// SHA-256 لكلمة المرور (الافتراضية: "1234" — غيّرها لاحقاً)
+const ADMIN_HASH = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+const IMGBB_KEY = "94c347c8dbaeab48f7f9b398b8b986c6";
+
+let currentStudent = null;
+let isGuest = false;
+let adminLogged = false;
+let cache = { videos:[], materials:[], news:[], students:[] };
+let adminTab = "videos";
+let titleClicks = 0, titleTimer = null;
+let editingItem = null; // { coll, id, data }
+
+/* ============================================================
+   أدوات
+   ============================================================ */
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2400);
+}
+function esc(s){
+  return (s||'').toString().replace(/[&<>"']/g, c=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+function ytId(url){
+  const m = (url||'').match(/(?:youtu\.be\/|v=|embed\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+function ytThumb(url){
+  const id = ytId(url);
+  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
+}
+async function sha256(text){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function extractImgbbUrl(resp){
+  return resp?.data?.display_url || resp?.data?.url || resp?.data?.image?.url || null;
+}
+
+/* ============================================================
+   التنقل
+   ============================================================ */
+function showView(which){
+  document.getElementById('navStudent').classList.toggle('active', which==='student');
+  document.getElementById('studentView').classList.toggle('hidden', which!=='student');
+  document.getElementById('adminView').classList.toggle('hidden', which!=='admin');
+  document.getElementById('nameScreen').classList.add('hidden');
+}
+window.showView = showView;
+
+/* ============================================================
+   الضغط 7 مرات على الشعار
+   ============================================================ */
+document.getElementById('siteTitle').addEventListener('click', ()=>{
+  titleClicks++;
+  clearTimeout(titleTimer);
+  titleTimer = setTimeout(()=>{ titleClicks = 0; }, 1500);
+  if(titleClicks >= 7){
+    titleClicks = 0;
+    openAdminModal();
+  }
+});
+
+function openAdminModal(){
+  if(adminLogged){ showView('admin'); return; }
+  document.getElementById('adminModal').classList.remove('hidden');
+  document.getElementById('adminPass').value = '';
+  setTimeout(()=>document.getElementById('adminPass').focus(), 100);
+}
+function closeAdminModal(){
+  document.getElementById('adminModal').classList.add('hidden');
+}
+window.closeAdminModal = closeAdminModal;
+
+async function tryAdminLogin(){
+  const pass = document.getElementById('adminPass').value;
+  if(!pass){ toast('أدخل كلمة المرور'); return; }
+  const hash = await sha256(pass);
+  if(hash !== ADMIN_HASH){ toast('كلمة المرور غير صحيحة'); return; }
+  adminLogged = true;
+  localStorage.setItem('adminToken', ADMIN_HASH);
+  closeAdminModal();
+  document.getElementById('navAdmin').classList.remove('hidden');
+  document.getElementById('navLogout').classList.remove('hidden');
+  showView('admin');
+  renderStudents();
+  populateStudentSelect();
+  renderAdminList();
+  toast('مرحباً بك أيها المدير');
+}
+window.tryAdminLogin = tryAdminLogin;
+
+/* ============================================================
+   دخول الطالب
+   ============================================================ */
+async function enterAsStudent(){
+  const name = document.getElementById('studentName').value.trim();
+  if(!name){ toast('الرجاء إدخال الاسم'); return; }
+  const snap = await get(ref(db,'students'));
+  let found = null;
+  if(snap.exists()){
+    const data = snap.val();
+    for(const id in data){
+      if((data[id].name||'').trim() === name){ found = {id, ...data[id]}; break; }
+    }
+  }
+  if(!found){
+    const newRef = push(ref(db,'students'));
+    const obj = { name, premium:false, createdAt: Date.now() };
+    await set(newRef, obj);
+    found = { id:newRef.key, ...obj };
+  }
+  currentStudent = found;
+  isGuest = false;
+  localStorage.setItem('studentId', found.id);
+  renderStudentView();
+  showView('student');
+}
+window.enterAsStudent = enterAsStudent;
+
+function enterAsGuest(){
+  isGuest = true;
+  currentStudent = null;
+  renderStudentView();
+  showView('student');
+}
+window.enterAsGuest = enterAsGuest;
+
+function logout(){
+  localStorage.removeItem('studentId');
+  localStorage.removeItem('adminToken');
+  currentStudent = null;
+  isGuest = false;
+  adminLogged = false;
+  document.getElementById('navAdmin').classList.add('hidden');
+  document.getElementById('navLogout').classList.add('hidden');
+  document.getElementById('nameScreen').classList.remove('hidden');
+  document.getElementById('studentView').classList.add('hidden');
+  document.getElementById('adminView').classList.add('hidden');
+  document.getElementById('studentName').value = '';
+  showView('student');
+}
+window.logout = logout;
+
+/* ============================================================
+   واجهة الطالب
+   ============================================================ */
+function renderStudentView(){
+  document.getElementById('guestBanner').classList.toggle('hidden', !isGuest);
+  const promo = document.getElementById('promoBox');
+  if(currentStudent && currentStudent.premium) promo.classList.add('hidden');
+  else promo.classList.remove('hidden');
+  renderVideos(); renderMaterials(); renderNews();
+}
+
+function switchTab(name, btn){
+  document.querySelectorAll('#studentView .tab-content').forEach(el=>el.classList.add('hidden'));
+  document.getElementById('tab-'+name).classList.remove('hidden');
+  document.querySelectorAll('#studentView .tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+window.switchTab = switchTab;
+
+function scrollToPromo(){ document.getElementById('promoBox').scrollIntoView({behavior:'smooth'}); }
+window.scrollToPromo = scrollToPromo;
+
+/* ============================================================
+   عرض الفيديوهات
+   ============================================================ */
+function renderVideos(){
+  const grid = document.getElementById('videosGrid');
+  if(!cache.videos.length){ grid.innerHTML = '<div class="empty">لا توجد فيديوهات بعد.</div>'; return; }
+  const list = [...cache.videos].sort((a,b)=>a.createdAt-b.createdAt);
+  grid.innerHTML = list.map(v=>{
+    const yt = ytId(v.url||'');
+    let media = '';
+    if(yt){
+      const thumb = v.img || ytThumb(v.url);
+      media = `<div style="position:relative;cursor:pointer" onclick="window.open('${esc(v.url)}','_blank')">
+        <img src="${esc(thumb)}" alt="">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+             background:rgba(15,43,70,.4);color:#fff;font-size:42px">▶</div></div>`;
+    } else {
+      media = `<video src="${esc(v.url)}" controls ${v.img?`poster="${esc(v.img)}"`:''}></video>`;
+    }
+    return `<div class="item">${media}
+      <div class="body"><div class="title">${esc(v.title)}</div>
+      <div class="desc">درس تعليمي</div></div></div>`;
+  }).join('');
+}
+
+/* ============================================================
+   عرض المواد
+   ============================================================ */
+function renderMaterials(){
+  const grid = document.getElementById('materialsGrid');
+  if(!cache.materials.length){ grid.innerHTML = '<div class="empty">لا توجد مواد بعد.</div>'; return; }
+  const list = [...cache.materials].sort((a,b)=>a.createdAt-b.createdAt);
+  grid.innerHTML = list.map(m=>{
+    const img = m.img ? `<img src="${esc(m.img)}" alt="">` : '';
+    const audio = m.audio ? `<audio controls src="${esc(m.audio)}"></audio>` : '';
+    const doc = m.doc ? `<a href="${esc(m.doc)}" target="_blank"
+      style="display:inline-block;margin-top:10px;color:var(--primary-2);
+      font-size:13px;font-weight:600">📄 تحميل المستند</a>` : '';
+    const link = m.link ? `<a href="${esc(m.link)}" target="_blank"
+      style="color:var(--primary-2);font-size:13px;font-weight:600">🔗 فتح الرابط</a>` : '';
+    return `<div class="item">${img}
+      <div class="body"><div class="title">${esc(m.title)}</div>
+      <div class="desc">${esc(m.text)}</div>${audio}
+      <div style="margin-top:10px;display:flex;gap:12px;flex-wrap:wrap">${doc} ${link}</div>
+      </div></div>`;
+  }).join('');
+}
+
+/* ============================================================
+   عرض الأخبار — كل طالب يرى أخباره فقط
+   ============================================================ */
+function renderNews(){
+  const grid = document.getElementById('newsGrid');
+  let list = [...cache.news];
+
+  // فلترة حسب الطالب الحالي
+  if(isGuest){
+    grid.innerHTML = `<div class="empty">سجّل دخولك كطالب لعرض أخبارك الشخصية.</div>`;
+    return;
+  }
+  if(currentStudent){
+    list = list.filter(n => n.studentId === currentStudent.id);
+  } else {
+    list = [];
+  }
+
+  if(!list.length){
+    grid.innerHTML = '<div class="empty">لا توجد أخبار خاصة بك حالياً.</div>';
+    return;
+  }
+
+  list.sort((a,b)=>b.createdAt-a.createdAt);
+  grid.innerHTML = list.map(n=>{
+    const img = n.img ? `<img src="${esc(n.img)}" alt="">` : '';
+    const d = new Date(n.createdAt).toLocaleDateString('ar-EG');
+    return `<div class="item">${img}
+      <div class="body"><span class="badge">${d}</span>
+      <div class="title" style="margin-top:10px">${esc(n.title)}</div>
+      <div class="desc">${esc(n.text)}</div></div></div>`;
+  }).join('');
+}
+
+/* ============================================================
+   رفع الملفات
+   ============================================================ */
+async function uploadToImgBB(file, onProgress){
+  if(file.size > 32*1024*1024) throw new Error('حجم الصورة يتجاوز 32 ميغا');
+  onProgress && onProgress(15);
+  const fd = new FormData();
+  fd.append('image', file);
+  onProgress && onProgress(40);
+  const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`, {
+    method:'POST', body: fd
+  });
+  onProgress && onProgress(80);
+  const data = await res.json();
+  onProgress && onProgress(100);
+  if(!data.success) throw new Error(data?.error?.message || 'فشل رفع الصورة');
+  return extractImgbbUrl(data);
+}
+
+async function uploadGeneric(file, onProgress){
+  if(file.size > 100*1024*1024) throw new Error('الحجم يتجاوز 100 ميغا');
+  onProgress && onProgress(20);
+  const fd = new FormData();
+  fd.append('file', file);
+  onProgress && onProgress(50);
+  const res = await fetch('https://tmpfiles.org/api/v1/upload', { method:'POST', body: fd });
+  onProgress && onProgress(85);
+  const data = await res.json();
+  onProgress && onProgress(100);
+  const raw = data?.data?.url;
+  if(!raw) throw new Error('فشل رفع الملف');
+  return raw.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+}
+
+async function handleImageUpload(input, targetId){
+  const file = input.files[0];
+  if(!file) return;
+  const prog = document.getElementById(targetId+'Prog');
+  const info = document.getElementById(targetId+'Info');
+  const bar  = prog.querySelector('div');
+  prog.classList.add('on'); bar.style.width = '0%';
+  info.textContent = 'جارٍ الرفع...';
+  try{
+    const url = await uploadToImgBB(file, p=>bar.style.width = p+'%');
+    document.getElementById(targetId).value = url;
+    info.textContent = '✅ تم رفع الصورة';
+    toast('تم رفع الصورة');
+  }catch(e){
+    info.textContent = '❌ ' + e.message;
+    toast('خطأ: ' + e.message);
+  }finally{
+    prog.classList.remove('on');
+    input.value = '';
+  }
+}
+window.handleImageUpload = handleImageUpload;
+
+async function handleGenericUpload(input, targetId){
+  const file = input.files[0];
+  if(!file) return;
+  const prog = document.getElementById(targetId+'Prog');
+  const info = document.getElementById(targetId+'Info');
+  const bar  = prog.querySelector('div');
+  prog.classList.add('on'); bar.style.width = '0%';
+  info.textContent = 'جارٍ الرفع...';
+  try{
+    const url = await uploadGeneric(file, p=>bar.style.width = p+'%');
+    document.getElementById(targetId).value = url;
+    info.textContent = '✅ تم الرفع بنجاح';
+    toast('تم رفع الملف');
+  }catch(e){
+    info.textContent = '❌ ' + e.message;
+    toast('خطأ: ' + e.message);
+  }finally{
+    prog.classList.remove('on');
+    input.value = '';
+  }
+}
+window.handleGenericUpload = handleGenericUpload;
+
+/* ============================================================
+   إضافة محتوى
+   ============================================================ */
+async function addVideo(){
+  const title = document.getElementById('vTitle').value.trim();
+  const url   = document.getElementById('vUrl').value.trim();
+  const img   = document.getElementById('vImg').value.trim();
+  if(!title || !url){ toast('أدخل الاسم والرابط'); return; }
+  await push(ref(db,'videos'), { title, url, img, createdAt: Date.now() });
+  ['vTitle','vUrl','vImg'].forEach(id=>document.getElementById(id).value='');
+  toast('تم إضافة الفيديو ✅');
+}
+window.addVideo = addVideo;
+
+async function addMaterial(){
+  const title = document.getElementById('mTitle').value.trim();
+  const text  = document.getElementById('mText').value.trim();
+  const img   = document.getElementById('mImg').value.trim();
+  const audio = document.getElementById('mAudio').value.trim();
+  const doc   = document.getElementById('mDoc').value.trim();
+  if(!title){ toast('أدخل العنوان على الأقل'); return; }
+  await push(ref(db,'materials'), { title, text, img, audio, doc, createdAt: Date.now() });
+  ['mTitle','mText','mImg','mAudio','mDoc'].forEach(id=>document.getElementById(id).value='');
+  ['mImgInfo','mAudioInfo','mDocInfo'].forEach(id=>document.getElementById(id).textContent='');
+  toast('تم إضافة الدرس ✅');
+}
+window.addMaterial = addMaterial;
+
+async function addNews(){
+  const studentId = document.getElementById('nStudent').value;
+  const title = document.getElementById('nTitle').value.trim();
+  const text  = document.getElementById('nText').value.trim();
+  const img   = document.getElementById('nImg').value.trim();
+  if(!studentId){ toast('اختر الطالب أولاً'); return; }
+  if(!title){ toast('أدخل عنوان الخبر'); return; }
+  const student = cache.students.find(s=>s.id===studentId);
+  await push(ref(db,'news'), {
+    studentId, studentName: student?.name || '',
+    title, text, img, createdAt: Date.now()
+  });
+  ['nTitle','nText','nImg'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('nImgInfo').textContent = '';
+  document.getElementById('nStudent').value = '';
+  toast('تم نشر الخبر ✅');
+}
+window.addNews = addNews;
+
+/* ============================================================
+   قائمة الطلبة في select
+   ============================================================ */
+function populateStudentSelect(){
+  const sel = document.getElementById('nStudent');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— اختر الطالب —</option>' +
+    [...cache.students]
+      .sort((a,b)=>(a.name||'').localeCompare(b.name||'','ar'))
+      .map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('');
+  sel.value = cur;
+}
+
+/* ============================================================
+   قائمة الطلبة
+   ============================================================ */
+function renderStudents(){
+  const box = document.getElementById('studentsList');
+  if(!cache.students.length){
+    box.innerHTML = '<div class="empty">لا يوجد طلبة مسجلون بعد.</div>';
+    return;
+  }
+  const list = [...cache.students].sort((a,b)=>a.createdAt-b.createdAt);
+  box.innerHTML = list.map(s=>`
+    <div class="student-row">
+      <div><div class="name">${esc(s.name)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px">
+          ${s.premium?'<span class="badge green">مميز ⭐</span>':'طالب عادي'}
+        </div></div>
+      <span class="star ${s.premium?'on':''}"
+            onclick="toggleStar('${s.id}', ${!!s.premium})"
+            title="تمييز الطالب">⭐</span>
+    </div>`).join('');
+  populateStudentSelect();
+}
+
+async function toggleStar(id, current){
+  await update(ref(db,'students/'+id), { premium: !current });
+  toast(!current ? 'تم تمييز الطالب ⭐' : 'تم إلغاء التمييز');
+}
+window.toggleStar = toggleStar;
+
+/* ============================================================
+   إدارة المحتوى — عرض مع تعديل وحذف
+   ============================================================ */
+function switchAdminTab(name, btn){
+  adminTab = name;
+  document.querySelectorAll('#adminView .tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdminList();
+}
+window.switchAdminTab = switchAdminTab;
+
+function renderAdminList(){
+  const box = document.getElementById('adminList');
+  const arr = cache[adminTab] || [];
+  if(!arr.length){ box.innerHTML = '<div class="empty">لا يوجد محتوى.</div>'; return; }
+  const list = [...arr].sort((a,b)=>b.createdAt-a.createdAt);
+  box.innerHTML = list.map(x=>{
+    const subtitle = adminTab==='news'
+      ? `👤 ${esc(x.studentName||'')} — ${esc(x.title||'')}`
+      : esc(x.title || x.name || '');
+    return `<div class="admin-list-item">
+      <div class="info">
+        <div class="name">${subtitle}</div>
+        <div class="meta">${esc(x.url || x.text || '').slice(0,110)}</div>
+      </div>
+      <div class="acts">
+        <button class="btn small" style="background:#e8f0fa;color:var(--primary-2)"
+                onclick="openEditModal('${adminTab}','${x.id}')">✏️ تعديل</button>
+        <button class="btn small danger"
+                onclick="delItem('${adminTab}','${x.id}')">🗑️ حذف</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function delItem(coll, id){
+  if(!confirm('هل أنت متأكد من حذف هذا العنصر؟')) return;
+  await remove(ref(db, coll+'/'+id));
+  toast('تم الحذف');
+}
+window.delItem = delItem;
+
+/* ============================================================
+   نافذة التعديل
+   ============================================================ */
+function openEditModal(coll, id){
+  const item = (cache[coll]||[]).find(x=>x.id===id);
+  if(!item){ toast('العنصر غير موجود'); return; }
+  editingItem = { coll, id, data:{...item} };
+
+  const body = document.getElementById('editBody');
+  const title = document.getElementById('editTitle');
+
+  if(coll === 'videos'){
+    title.textContent = '✏️ تعديل الفيديو';
+    body.innerHTML = `
+      <input id="e_title" placeholder="اسم الفيديو" value="${esc(item.title||'')}" />
+      <input id="e_url" placeholder="رابط الفيديو" value="${esc(item.url||'')}" />
+      <input id="e_img" placeholder="رابط الصورة المصغّرة" value="${esc(item.img||'')}" />
+    `;
+  } else if(coll === 'materials'){
+    title.textContent = '✏️ تعديل الدرس';
+    body.innerHTML = `
+      <input id="e_title" placeholder="العنوان" value="${esc(item.title||'')}" />
+      <textarea id="e_text" placeholder="الشرح">${esc(item.text||'')}</textarea>
+      <input id="e_img" placeholder="رابط صورة" value="${esc(item.img||'')}" />
+      <input id="e_audio" placeholder="رابط صوت" value="${esc(item.audio||'')}" />
+      <input id="e_doc" placeholder="رابط مستند" value="${esc(item.doc||'')}" />
+    `;
+  } else if(coll === 'news'){
+    title.textContent = '✏️ تعديل الخبر';
+    const opts = [...cache.students]
+      .sort((a,b)=>(a.name||'').localeCompare(b.name||'','ar'))
+      .map(s=>`<option value="${s.id}" ${s.id===item.studentId?'selected':''}>${esc(s.name)}</option>`).join('');
+    body.innerHTML = `
+      <select id="e_studentId">
+        <option value="">— اختر الطالب —</option>
+        ${opts}
+      </select>
+      <input id="e_title" placeholder="عنوان الخبر" value="${esc(item.title||'')}" />
+      <textarea id="e_text" placeholder="تفاصيل الخبر">${esc(item.text||'')}</textarea>
+      <input id="e_img" placeholder="رابط صورة" value="${esc(item.img||'')}" />
+    `;
+  }
+
+  document.getElementById('editModal').classList.remove('hidden');
+}
+window.openEditModal = openEditModal;
+
+function closeEditModal(){
+  document.getElementById('editModal').classList.add('hidden');
+  editingItem = null;
+}
+window.closeEditModal = closeEditModal;
+
+async function saveEdit(){
+  if(!editingItem){ return; }
+  const { coll, id } = editingItem;
+  const upd = {};
+
+  const g = (k)=> {
+    const el = document.getElementById('e_'+k);
+    return el ? el.value.trim() : '';
+  };
+
+  if(coll === 'videos'){
+    upd.title = g('title');
+    upd.url   = g('url');
+    upd.img   = g('img');
+    if(!upd.title || !upd.url){ toast('أدخل الاسم والرابط'); return; }
+  } else if(coll === 'materials'){
+    upd.title = g('title');
+    upd.text  = g('text');
+    upd.img   = g('img');
+    upd.audio = g('audio');
+    upd.doc   = g('doc');
+    if(!upd.title){ toast('أدخل العنوان'); return; }
+  } else if(coll === 'news'){
+    const sid = document.getElementById('e_studentId').value;
+    if(!sid){ toast('اختر الطالب'); return; }
+    const st = cache.students.find(s=>s.id===sid);
+    upd.studentId   = sid;
+    upd.studentName = st?.name || '';
+    upd.title = g('title');
+    upd.text  = g('text');
+    upd.img   = g('img');
+    if(!upd.title){ toast('أدخل عنوان الخبر'); return; }
+  }
+
+  await update(ref(db, coll+'/'+id), upd);
+  closeEditModal();
+  toast('تم حفظ التعديلات ✅');
+}
+window.saveEdit = saveEdit;
+
+/* ============================================================
+   الاستماع للبيانات
+   ============================================================ */
+onValue(ref(db,'videos'), snap=>{
+  cache.videos = snap.exists() ? Object.entries(snap.val()).map(([id,v])=>({id,...v})) : [];
+  renderVideos(); renderAdminList();
+});
+onValue(ref(db,'materials'), snap=>{
+  cache.materials = snap.exists() ? Object.entries(snap.val()).map(([id,v])=>({id,...v})) : [];
+  renderMaterials(); renderAdminList();
+});
+onValue(ref(db,'news'), snap=>{
+  cache.news = snap.exists() ? Object.entries(snap.val()).map(([id,v])=>({id,...v})) : [];
+  renderNews(); renderAdminList();
+});
+onValue(ref(db,'students'), snap=>{
+  cache.students = snap.exists() ? Object.entries(snap.val()).map(([id,v])=>({id,...v})) : [];
+  renderStudents();
+  populateStudentSelect();
+  if(currentStudent){
+    const found = cache.students.find(s=>s.id===currentStudent.id);
+    if(found){ currentStudent = found; renderStudentView(); }
+  }
+});
+
+/* ============================================================
+   استرجاع الجلسة
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', async ()=>{
+  if(localStorage.getItem('adminToken') === ADMIN_HASH){
+    adminLogged = true;
+    document.getElementById('navAdmin').classList.remove('hidden');
+    document.getElementById('navLogout').classList.remove('hidden');
+  }
+  const sid = localStorage.getItem('studentId');
+  if(sid){
+    const snap = await get(ref(db,'students/'+sid));
+    if(snap.exists()){
+      currentStudent = { id:sid, ...snap.val() };
+      renderStudentView();
+      showView('student');
+    }
+  }
+});
+</script>
+</body>
+</html>
